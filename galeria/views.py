@@ -1,8 +1,20 @@
-from django.shortcuts import render
+from django.shortcuts import render , get_object_or_404
+from galeria.models import Fotografia
 
 # Create your views here.
 def index(request):
-    return render(request,'galeria/index.html')
+    fotografias = Fotografia.objects.order_by("data_fotografia").filter(publicada = True)
+    # .order_by() define a ordem com que os objetos serão trazidos e .filter() define quais objetos serão trazidos à partir de um filtro
+    return render(request,'galeria/index.html',{"cards":fotografias})
 
-def imagem(request):
-    return render(request,'galeria/imagem.html')
+def imagem(request, foto_id):
+    fotografia = get_object_or_404(Fotografia, pk= foto_id)
+    return render(request,'galeria/imagem.html', {'fotografia': fotografia})
+
+def buscar(request,):
+    fotografias = Fotografia.objects.order_by("data_fotografia").filter(publicada = True)
+    if "buscar" in request.GET:
+        nome_a_buscar = request.GET['buscar']
+        if nome_a_buscar:
+            fotografias = fotografias.filter(nome__icontains=nome_a_buscar)
+    return render(request, "galeria/buscar.html",{"cards":fotografias})
