@@ -17,8 +17,8 @@
         <section class="menu-lateral">
             <nav class="menu-lateral__navegacao">
                 <a href="{% url 'index' %}"><img title='icone_home' src="{% static '/assets/ícones/1x/Home - ativo.png' %}"> Home</a>
-                <a href="#"><img title='icone_mais_vistas' src="{% static '/assets/ícones/1x/Mais vistas - inativo.png' %}"> Mais vistas</a>
-                <a href="#"><img title='icone_nova' src="{% static '/assets/ícones/1x/Novas - inativo.png' %}"> Novas</a>
+                <a href="{% url 'login' %}"><img title='icone_mais_vistas' src="{% static '/assets/ícones/1x/Mais vistas - inativo.png' %}"> Login</a>
+                <a href="{% url 'cadastro' %}"><img title='icone_nova' src="{% static '/assets/ícones/1x/Novas - inativo.png' %}"> Cadastro</a>
                 <a href="#"><img title='icone_surp' src="{% static '/assets/ícones/1x/Surpreenda-me - inativo.png' %}"> Surpreenda-me</a>
             </nav>
         </section>
